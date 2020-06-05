@@ -25,36 +25,6 @@
     <meta name="robots" content="index, follow" />
     <meta name="copyright" content="<?php echo pll__(get_option('meta_copyrights'),'tornado'); ?>">
     <?php wp_head(); ?>
-    <!-- Design Style Options -->
-    <style>
-        /*======== Root CSS Variables ========*/
-        :root {
-            /*======== Primary Color ========*/
-            --primary-color: #4166d6;
-            --primary-color-hover: #2e4dc9;
-            /*======== Secondary Color ========*/
-            --secondary-color: #de670f;
-            --secondary-color-hover: #eaa711;
-            /*======== TXT Colors ========*/
-            --reverse-color:#FFF;
-            --reverse-color-dark:#1c1c1c;
-            --light-color:#cad0e0;
-            --black-color:#222222;
-            --typo-color:#555555;
-            /*========== Typography Font Family ==========*/
-            --primary-font:'DIN NEXT'; // font family for Head's and Titles
-            --secondary-font:'DIN NEXT'; // font family for Paragraph and Small Text
-            /*========== Typography Base Font Sizes ==========*/
-            --base-l-size:16px; // Base Font Size For Large Screens
-            --base-m-size:15px; // Base Font Size For Medium Screens
-            --base-s-size:14px; // Base Font Size For Small Screens
-            --base-line-height:1.4; // Base Line Height
-            /*========== Typography Font Weight ==========*/
-            --normal-weight:400; // Normal Font Weight
-            --medium-weight:500; // Medium Font Weight
-            --strong-weight:600; // Bold/Bolder Font Weight
-        }
-    </style>
     <!-- Website Main Structure Data -->
     <script type="application/ld+json">{
         "@context": "http://schema.org",
@@ -89,5 +59,9 @@
         "name": "<?php bloginfo('name'); ?>",
         "image": "<?php echo get_option('meta_graph_cover'); ?>"
     }</script>
+    <!-- Custom Header Code -->
+    <?php echo get_option('header_code'); ?>
 </head>
 <body>
+    <!-- Custom Body Code -->
+    <?php echo get_option('body_code_start'); ?>

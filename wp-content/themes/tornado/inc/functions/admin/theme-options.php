@@ -4,6 +4,17 @@
      * @package Tornado Wordpress
      * Creating Custom Options for Easy Theme and Design Control.
      * 
+     * ========> Reference by Comments <=======
+     * 00 - Register Options
+     * 01 - General => Meta Options
+     * 02 - General => Custom Codes
+     * 03 - Contact => Contact Info
+     * 04 - Contact => Social
+     * 05 - Design => Global
+     * 06 - Design => Colors
+     * 07 - Design => Fonts
+     * 08 - Page Render Function
+     * 
     */
 
     //======= Exit if Try to Access Directly =======//
@@ -15,6 +26,10 @@
         register_setting('tornado-options', 'meta_keywords');
         register_setting('tornado-options', 'meta_graph_cover');
         register_setting('tornado-options', 'meta_copyrights');
+        //=========> General => Custom Codes <=========//
+        register_setting('tornado-options', 'header_code');
+        register_setting('tornado-options', 'body_code_start');
+        register_setting('tornado-options', 'footer_code');
         //=========> Contact => Contact Info <=========//
         register_setting('tornado-options', 'phone_number');
         register_setting('tornado-options', 'phone_number_2nd');
@@ -28,8 +43,25 @@
         register_setting('tornado-options', 'twitter_url');
         register_setting('tornado-options', 'instagram_url');
         register_setting('tornado-options', 'linkedin_url');
-        //=========> Design => Options <=========//
+        //=========> Design => Global <=========//
         register_setting('tornado-options', 'theme_logo');
+        register_setting('tornado-options', 'theme_logo_mobile');
+        //=========> Design => Colors <=========//
+        register_setting('tornado-options', 'primary_color');
+        register_setting('tornado-options', 'primary_color_hover');
+        register_setting('tornado-options', 'secondary_color');
+        register_setting('tornado-options', 'secondary_color_hover');
+        register_setting('tornado-options', 'typo_color');
+        //=========> Design => Fonts <=========//
+        register_setting('tornado-options', 'primary_font');
+        register_setting('tornado-options', 'secondary_font');
+        register_setting('tornado-options', 'base_l_size');
+        register_setting('tornado-options', 'base_m_size');
+        register_setting('tornado-options', 'base_s_size');
+        register_setting('tornado-options', 'base_line_height');
+        register_setting('tornado-options', 'normal_weight');
+        register_setting('tornado-options', 'medium_weight');
+        register_setting('tornado-options', 'strong_weight');
     }
 
     add_action('admin_init', 'register_theme_options');
@@ -91,31 +123,108 @@
 
 <!-- Media Uploader Popup -->
 <script type="text/javascript">
-jQuery(document).ready(function ($) {
-    //===== Runs when the image button is clicked =====//
-    $('.uploader-btn').click(function (e) {
-        e.preventDefault();
-        //===== Instantiates the variable that holds the media library =====//
-        var meta_image_frame;
-        //===== Get preview Input =====//
-        var meta_image = $(this).parents('.media-uploader-control').find('.uploader-input');
-        //===== If the media library already exists, re-open it =====//
-        if (meta_image_frame) { meta_image_frame.open(); return; }
-        //===== Sets up the media library =====//
-        meta_image_frame = wp.media.frames.meta_image_frame = wp.media({
-            title: meta_image.title,
-            button: { text: meta_image.button }
+    jQuery(document).ready(function ($) {
+        //===== Runs when the image button is clicked =====//
+        $('.uploader-btn').click(function (e) {
+            e.preventDefault();
+            //===== Instantiates the variable that holds the media library =====//
+            var meta_image_frame;
+            //===== Get preview Input =====//
+            var meta_image = $(this).parents('.media-uploader-control').find('.uploader-input'),
+                imagePrev = $(this).parents('.media-uploader-control').find('.image-prev');
+            //===== If the media library already exists, re-open it =====//
+            if (meta_image_frame) { meta_image_frame.open(); return; }
+            //===== Sets up the media library =====//
+            meta_image_frame = wp.media.frames.meta_image_frame = wp.media({
+                title: meta_image.title,
+                button: { text: meta_image.button }
+            });
+            //===== Runs when an media is selected =====//
+            meta_image_frame.on('select', function () {
+                //===== Grabs the Selection and creates a JSON representation of the model =====//
+                var media_attachment = meta_image_frame.state().get('selection').first().toJSON();
+                //===== Sends the attachment URL to the media input field =====//
+                meta_image.val(media_attachment.url);
+                imagePrev.attr('src',media_attachment.url);
+            });
+            //===== Opens the media library =====//
+            meta_image_frame.open();
         });
-        //===== Runs when an media is selected =====//
-        meta_image_frame.on('select', function () {
-            //===== Grabs the Selection and creates a JSON representation of the model =====//
-            var media_attachment = meta_image_frame.state().get('selection').first().toJSON();
-            //===== Sends the attachment URL to the media input field =====//
-            meta_image.val(media_attachment.url);
-        });
-        //===== Opens the media library =====//
-        meta_image_frame.open();
     });
-});
 </script>
+
+<!-- Color Picker -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        'use strict';
+        /*============ Select Color Picker Elements ==============*/
+        var color_pickers = document.querySelectorAll('.color-picker');
+        Array.from(color_pickers).forEach(element => {
+            var pickerInput = element.querySelector('input'),
+                pickerBackground = element.querySelector('.color-prev'),
+                defaultColor = pickerInput.getAttribute('placeholder');
+
+            var picker = new Picker(element);
+
+            //==== Set Default =====//
+            picker.setColor(defaultColor)
+            pickerInput.value = defaultColor;
+
+            // You can do what you want with the chosen color using two callbacks: onChange and onDone.
+            picker.onChange = function(color) {
+                pickerBackground.style.background = color.hex;
+                pickerInput.value = color.hex;
+            };
+        });
+    });
+</script>
+
+<!-- Tabs Hack -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        //========> get Tabs Elements <========//
+        var tab_btns = document.querySelectorAll('[data-tab]'),
+            tabs_content = document.querySelectorAll('.tab-content');
+
+        //========> On Click Add Tab ID to URL <========//
+        Array.from(tab_btns).forEach(btn => {
+            btn.addEventListener('click', event => {
+                var tab_id = btn.getAttribute('data-tab');
+                window.location.hash = tab_id;
+            });
+        });
+
+        //========> get Tab Id from URL <========//
+        var current_tab_id = window.location.hash.substr(1),
+            current_tab = document.querySelector('#'+current_tab_id);
+
+        if (current_tab.classList.contains('tab-content')) {
+            Array.from(tabs_content).forEach(tab => {
+                var tab_id = tab.getAttribute('id');
+                //=======> Active Button <========//
+                Array.from(tab_btns).forEach(btn => {
+                    var btn_id = btn.getAttribute('data-tab');
+                    if(btn_id == current_tab_id) {
+                        btn.classList.add('active'); 
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                //=======> Active Tab <========//
+                setTimeout(() => {
+                    if(tab_id == current_tab_id) {
+                        tab.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                    }
+                }, 200);
+            });
+        }
+    });
+</script>
+
+<!-- Code Mirror -->
+<script src="https://codemirror.net/lib/codemirror.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.0/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/mode/htmlmixed/htmlmixed.min.js"></script>
 <?php } ?>

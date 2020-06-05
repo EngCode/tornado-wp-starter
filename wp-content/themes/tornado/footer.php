@@ -19,6 +19,8 @@
     </script>
     <!-- // Thanks Redirect -->
 
+    <!-- Custom Footer Code -->
+    <?php echo get_option('footer_code'); ?>
     <!-- Required JS Files -->
     <?php wp_footer(); ?>
 </body>

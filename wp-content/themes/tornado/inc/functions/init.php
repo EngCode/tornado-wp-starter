@@ -22,13 +22,17 @@
      * 10 - Jetpack Responsive Videos.
      * 11 - Jetpack Content Options.
      * 12 - Declear WooCommerce Support
+     * 13 - Default Meta Options
+     * 14 - Default Design Global Options
+     * 15 - Default Design Colors Options
+     * 16 - Default Design Fonts Options
      * 
     */
 
     //======= Exit if Try to Access Directly =======//
     defined('ABSPATH') || exit;
 
-    if (!function_exists( 'tornado_setup') ) :
+    if (!function_exists('tornado_setup') ) :
         function tornado_setup() {
             //====== Translation Support ======//
             load_theme_textdomain( 'tornado', get_template_directory() . '/languages' );
