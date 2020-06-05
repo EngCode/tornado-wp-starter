@@ -28,7 +28,7 @@
         register_setting('tornado-options', 'twitter_url');
         register_setting('tornado-options', 'instagram_url');
         register_setting('tornado-options', 'linkedin_url');
-        //=========> Design => Logo <=========//
+        //=========> Design => Options <=========//
         register_setting('tornado-options', 'theme_logo');
     }
 
@@ -43,7 +43,7 @@
 <div class="theme-options <?php if (is_rtl()) { echo 'rtl'; }?>">
     <!-- Tabs Menu -->
     <ul class="tabs-menu">
-        <li class="logo"> <img src="<?php echo $theme_path; ?>/inc/functions/admin/img/tornado-logo.png" alt=""> </li>
+        <li class="logo"> <img src="<?php echo $theme_path; ?>/inc/functions/admin/img/phoenix-logo.png" alt=""> </li>
         <li class="ti-cog active" data-tab="general-options"><?php echo __('General Settings','tornado'); ?></li>
         <li class="ti-phone" data-tab="contact-options"><?php echo __('Contact Info','tornado'); ?></li>
         <li class="ti-brush" data-tab="design-options"><?php echo __('Design Options','tornado'); ?></li>
