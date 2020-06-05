@@ -1,0 +1,345 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado Starter Theme\n"
+"POT-Creation-Date: 2020-06-04 23:57+0200\n"
+"PO-Revision-Date: 2020-06-05 00:00+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: archive.php:45
+msgid "Sorry no Posts have been found here."
+msgstr "ناسف لم نجد أي مقالات هنا."
+
+#: category.php:35 tag.php:34
+msgid "Sorry no Posts Have been Found."
+msgstr "ناسف لم نجد أي مقالات هنا."
+
+#: comments.php:15
+msgid ""
+"This article is protected by password: Please enter a word to open comments"
+msgstr "هذه المقالة محمية بكلمة مرور: يرجى إدخال كلمة لفتح التعليقات"
+
+#: comments.php:27
+msgid "Please wait for your comment to be approved."
+msgstr "يرجى الانتظار حتى تتم الموافقة على تعليقك."
+
+#: comments.php:47
+msgid "no Comments Yet."
+msgstr "لا توجد تعليقات حتى الآن."
+
+#: comments.php:56
+msgid "Add a Comment"
+msgstr "اضف تعليق"
+
+#: comments.php:59
+msgid "You have to login for posting comments"
+msgstr "يجب عليك تسجيل الدخول لنشر التعليقات"
+
+#: comments.php:60
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: comments.php:67
+msgid "You are currently logged in as "
+msgstr "تم تسجيل دخولك حاليا باسم "
+
+#: comments.php:72
+msgid "Full Name"
+msgstr "الاسم بالكامل"
+
+#: comments.php:76 inc/functions/admin/options-tabs/02-Contact.php:32
+msgid "Email Address"
+msgstr "عنوان بريد الكتروني"
+
+#: comments.php:81
+msgid "Leave Your Comment Here"
+msgstr "اترك تعليقك هنا"
+
+#: comments.php:82
+msgid "Submit Comment"
+msgstr "إرسال التعليق"
+
+#: functions.php:67
+msgid "Blog Sidebar"
+msgstr "الشريط الجانبي للمدونة"
+
+#: functions.php:69
+msgid "Add widgets here."
+msgstr "أضف الحاجيات هنا."
+
+#: functions.php:138
+msgid "Previous Page"
+msgstr "الصفحة السابقة"
+
+#: functions.php:139
+msgid "Next Page"
+msgstr "الصفحة التالية"
+
+#: inc/functions/admin.php:26 inc/functions/admin.php:28
+msgid "Theme Options"
+msgstr "إعدادات القالب"
+
+#: inc/functions/admin.php:44 inc/functions/admin.php:45
+msgid "Menus Settings"
+msgstr "إعدادات القوائم"
+
+#: inc/functions/admin/options-tabs/01-General.php:12
+#: inc/functions/admin/options-tabs/03-Design.php:12
+#: inc/functions/admin/theme-options.php:47
+msgid "General Settings"
+msgstr "الإعدادات العامة"
+
+#: inc/functions/admin/options-tabs/01-General.php:18
+msgid "Meta Options"
+msgstr "إعدادات الميتا"
+
+#: inc/functions/admin/options-tabs/01-General.php:22
+#: inc/functions/admin/options-tabs/01-General.php:23
+msgid "SEO Keywords"
+msgstr "الكلمات المفتاحية Keywords"
+
+#: inc/functions/admin/options-tabs/01-General.php:27
+msgid "Open Graph Cover"
+msgstr "صورة الاوبن جراف للموقع"
+
+#: inc/functions/admin/options-tabs/01-General.php:30
+#: inc/functions/admin/options-tabs/03-Design.php:25
+msgid "Image URL"
+msgstr "رابط الصورة"
+
+#: inc/functions/admin/options-tabs/01-General.php:32
+#: inc/functions/admin/options-tabs/03-Design.php:27
+msgid "Select"
+msgstr "اختيار"
+
+#: inc/functions/admin/options-tabs/01-General.php:34
+#: inc/functions/admin/options-tabs/03-Design.php:29
+msgid "Preview"
+msgstr "معاينة"
+
+#: inc/functions/admin/options-tabs/01-General.php:35
+#: inc/functions/admin/options-tabs/03-Design.php:30
+msgid "Change"
+msgstr "تغيير"
+
+#: inc/functions/admin/options-tabs/01-General.php:41
+#: inc/functions/admin/options-tabs/01-General.php:42
+msgid "Footer Copyrights"
+msgstr "حقوق الموقع"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:12
+#: inc/functions/admin/theme-options.php:48
+msgid "Contact Info"
+msgstr "معلومات التواصل"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:18
+#, fuzzy
+#| msgid "Contact Info"
+msgid "Contact Information"
+msgstr "معلومات التواصل"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:22
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:23
+#: inc/functions/admin/options-tabs/02-Contact.php:28
+#: inc/functions/admin/options-tabs/02-Contact.php:43
+#: inc/functions/admin/options-tabs/02-Contact.php:48
+msgid "xx-xxxx-xxx"
+msgstr ""
+
+#: inc/functions/admin/options-tabs/02-Contact.php:27
+msgid "Phone Number 2nd"
+msgstr "رقم الهاتف الثاني"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:33
+#: inc/functions/admin/options-tabs/02-Contact.php:38
+msgid "example@mail.com"
+msgstr ""
+
+#: inc/functions/admin/options-tabs/02-Contact.php:37
+msgid "Email Address 2nd"
+msgstr "البريد الالكتروني الثاني"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:42
+msgid "Whatsapp Number"
+msgstr "رقم الواتس اب"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:47
+msgid "Whatsapp Number 2nd"
+msgstr "رقم الواتس اب الثاني"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:52
+msgid "Branch Location"
+msgstr "عنوان الشركة"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:53
+msgid "egypt, beni-suef, al-wasta"
+msgstr ""
+
+#: inc/functions/admin/options-tabs/02-Contact.php:63
+msgid "Social Media"
+msgstr "التواصل الاجتماعي"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:67
+msgid "Facebook url"
+msgstr "رابط فيس بوك"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:68
+msgid "https://fb.com/username"
+msgstr ""
+
+#: inc/functions/admin/options-tabs/02-Contact.php:72
+msgid "Twitter url"
+msgstr "رابط تويتر"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:73
+msgid "https://twitter.com/@username"
+msgstr ""
+
+#: inc/functions/admin/options-tabs/02-Contact.php:77
+msgid "Instagram url"
+msgstr "رابط انستاجرام"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:78
+msgid "https://instagram.com/username"
+msgstr ""
+
+#: inc/functions/admin/options-tabs/02-Contact.php:82
+msgid "Linked-in url"
+msgstr "رابط لينكد إن"
+
+#: inc/functions/admin/options-tabs/02-Contact.php:83
+msgid "https://linkedin.com/@username"
+msgstr ""
+
+#: inc/functions/admin/options-tabs/03-Design.php:18
+#: inc/functions/admin/theme-options.php:49
+msgid "Design Options"
+msgstr "إعدادات التصميم"
+
+#: inc/functions/admin/options-tabs/03-Design.php:22
+msgid "Theme Logo"
+msgstr "لوجو الموقع"
+
+#: inc/functions/admin/theme-options.php:82
+msgid "Powered by Tornado UI v2 Framework © 2016 - 2020"
+msgstr "مدعوم من Tornado UI v2 Framework © 2016-2020"
+
+#. Template Name of the plugin/theme
+#: inc/functions/custom-post-types.php:18
+msgid "Blog"
+msgstr "المدونة"
+
+#: inc/functions/custom-post-types.php:39
+msgid "Categories"
+msgstr "الاقسام"
+
+#: inc/template-parts/blogs/blog-details.php:21
+msgid "Posted on"
+msgstr "تم نشرة في"
+
+#: inc/template-parts/blogs/blog-details.php:22
+msgid "no comments"
+msgstr "لا توجد تعليقات حتى الآن"
+
+#: inc/template-parts/blogs/blog-details.php:22
+msgid "one comment"
+msgstr "تعليق واحد"
+
+#: inc/template-parts/blogs/blog-details.php:22
+msgid "comments"
+msgstr "لا توجد تعليقات حتى الآن"
+
+#: inc/template-parts/blogs/blog-details.php:23
+msgid "view"
+msgstr "مشاهدة"
+
+#: inc/template-parts/blogs/blog-details.php:27
+msgid "share"
+msgstr "مشاركة"
+
+#: search.php:18
+msgid "Search Resault for "
+msgstr "نتائج البحث "
+
+#: search.php:27
+msgid "No results found for "
+msgstr "لا يوجد نتائج لــ "
+
+#: search.php:27
+msgid "Try Another Keywords "
+msgstr "جرب كلمات بحث اخري "
+
+#: searchform.php:9
+msgid "Quick Search"
+msgstr "بحث سريع"
+
+#: searchform.php:11
+msgid "Search Keywords"
+msgstr "كلمات البحث"
+
+#: sidebar.php:13
+msgid "Sidebar is not ativated"
+msgstr "الشريط الجانبي غير مفعل"
+
+#: src/php/gutenberg.php:13
+msgid "Tornado Blocks"
+msgstr ""
+
+#: src/php/gutenberg.php:18
+msgid "Design Blocks"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Tornado Starter Theme"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://github.com/EngCode/Tornado-v2"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "This is a Clean Theme Framework based on Tornado UI Framework."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Abdullah Ramadan"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://flash-point.net"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Error 404"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Home Page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Default Pages"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Default Rich Content"
+msgstr ""

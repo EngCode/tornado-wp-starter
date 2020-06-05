@@ -1,0 +1,23 @@
+=========================================================================================
+- Backgrounds and Colors
+  - Coloring Text [ balck , white , primary , default ]
+  - Background Attributes [ data-src => background-image ]
+  - Background Colors [ white-bg , primary-bg , secondary-bg , dark-bg ]
+  - More BG Colors [ https://flash-point.net/tornado/docementation/coloring-utilities/ ]
+=========================================================================================
+- Text Alignment Classes
+  - tx-align-start    [ Page Direction Start Align ]
+  - tx-align-center   [ Centered Text Align ]
+  - tx-align-end      [ Page Direction Reverse Align ]
+  - More Text Options [ https://flash-point.net/tornado/docementation/typography/ ]
+=========================================================================================
+- Row and Grid System Alignment
+  - align-center-y  [ Vertical Align Items in Center ]
+  - align-center-x  [ Horizontally Align Items in Center ]
+  - align-end-x     [ Horizontally Align Items in Page Direction ]
+  - align-start-x   [ Horizontally Align Items in Page Direction Reverse ]
+  - More Options    [ https://flash-point.net/tornado/docementation/utilities-classes/ ]
+=========================================================================================
+- Text Sizes for Paragraphs     [ large-text , meduim-text , small-text ]
+- Headers Style / Sizes Classes [ h1 , h2 , h3 , h4 , h5, h6 ]
+=========================================================================================
