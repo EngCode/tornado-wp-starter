@@ -67,7 +67,7 @@
                     <span class="ti-help-mark help-btn" data-txt="<?php echo __('Theme Design Primary Color','tornado'); ?>"></span>
                 </label>
                 <div class="color-picker">
-                    <?php $color_val = get_option('primary_color_hover'); ?>
+                    <?php $color_val = get_option('primary_color'); ?>
                     <input type="text" name="primary_color" value="<?php echo $color_val; ?>" placeholder="<?php echo $color_val; ?>">
                     <div class="color-prev" style="background-color:<?php echo $color_val; ?>"></div>
                 </div>

@@ -120,7 +120,7 @@ $xlarge-query-down:1600px; // Big Desktop Screen Size to start from
             @extend %reset;
             position: absolute;
             top:20px;
-            left:25px;
+            right:25px;
         }
         .tab-content {
             padding: 30px;
@@ -181,6 +181,7 @@ $xlarge-query-down:1600px; // Big Desktop Screen Size to start from
         /*==== Page Head ====*/
         .page-head {border-radius: 5px 0 0 0;}
         .page-footer {border-radius: 0 0 0 5px;}
+        .tabs-form .floating-submit .submit {left: 25px;right: auto;}
     }
     /*======== Options Panel ========*/
     .options-panel {
@@ -201,7 +202,7 @@ $xlarge-query-down:1600px; // Big Desktop Screen Size to start from
         }
         /*==== Control Item ====*/
         .control-item {
-            padding:20px;
+            padding:15px 20px;
             padding-bottom: 0;
             border-bottom: 1px solid rgba(#000,0.1);
 

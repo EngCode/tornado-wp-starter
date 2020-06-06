@@ -43,6 +43,7 @@
 
     //==== Theme Initials ====//
     include( dirname(__FILE__) . '/inc/functions/init.php' );
+    include( dirname(__FILE__) . '/inc/functions/default-settings.php' );
 
     //==== Setting Page ====//
     include( dirname(__FILE__) . '/inc/functions/admin.php' );
