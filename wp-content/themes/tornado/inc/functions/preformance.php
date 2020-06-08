@@ -60,8 +60,8 @@
     }
     
     //====== Remove WP Embed Scripts ======// 
-    function deregister_wp_embed() {wp_deregister_script( 'wp-embed' );}
-    add_action( 'wp_footer','deregister_wp_embed');
+    // function deregister_wp_embed() {wp_deregister_script( 'wp-embed' );}
+    // add_action( 'wp_footer','deregister_wp_embed');
 
     //====== Remove Gutenberg Default CSS ======// 
     function wps_deregister_blocks() { wp_dequeue_style( 'wp-block-library' ); }

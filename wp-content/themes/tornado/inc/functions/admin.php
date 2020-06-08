@@ -46,8 +46,8 @@
             __('Menus Settings', 'tornado' ),
             'manage_options',
             'nav-menus.php',
-            '',
-            'dashicons-menu',1
+            'dashicons-menu',
+            1
         );
     }
 

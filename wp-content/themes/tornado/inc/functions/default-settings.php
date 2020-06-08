@@ -26,8 +26,8 @@
                 update_option('meta_keywords', 'كلمة , مفتاحية , تجريبية , Tornado UI');
             }
 
-            if(!get_option('meta_keywords')) {
-                update_option('meta_keywords', get_template_directory_uri() . '/screenshot.png');
+            if(!get_option('meta_graph_cover')) {
+                update_option('meta_graph_cover', get_template_directory_uri() . '/screenshot.png');
             }
 
             if(!get_option('meta_copyrights')) {

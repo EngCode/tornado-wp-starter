@@ -33,7 +33,6 @@
 
     //======== Debug Mode ========//
     error_reporting(E_ALL);
-    ini_set('display_errors', 1);
 
     //====== Theme Version =======//
     if (!defined('_S_VERSION')) {
