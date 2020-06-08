@@ -197,8 +197,9 @@
         var advancedSelect = document.querySelectorAll('.advanced-select');
         Array.from(advancedSelect).forEach((element,index) => {
             element.setAttribute('id','slime-selector-n'+index);
+            var selectorID = '#slime-selector-n'+index;
             new SlimSelect({
-                select: '#slime-selector-n'+index,
+                select: selectorID,
             });
         });
     });
