@@ -5,12 +5,33 @@
     */
     //======= Exit if Try to Access Directly =======//
     defined('ABSPATH') || exit;
+    //====== Google Fonts API Info =======//
+    $google_fonts_api = "AIzaSyASxx2HUwsHJ0gXmEi5V1xJyBI6WeTq8Hk";
+    $google_fonts_url = 'https://www.googleapis.com/webfonts/v1/webfonts?key=' . $google_fonts_api;
+    $google_fonts_args = array(
+        'timeout'     => 15,
+        'redirection' => 10,
+        'httpversion' => '1.0',
+    );
+    //====== Fetch Google Fonts =======//
+    $google_fonts_response = wp_remote_get( $google_fonts_url, $google_fonts_args );
+    //====== Decode Google Fonts Json =======//
+    $google_fonts_body = json_decode($google_fonts_response['body']);
+    //====== get the Fonts List Array =======//
+    $font_list = $google_fonts_body->items;
 ?>
 
 <!-- Page Head -->
 <div class="page-head">
     <h1><?php echo __('Design Options','tornado'); ?></h1>
 </div>
+
+<?php
+    //=========== Google Fonts Error ===========//
+    if (is_wp_error($google_fonts_response)) :
+        echo '<div class="alert danger">'.esc_html( $google_fonts_response->get_error_message()).'</div>';
+    endif;
+?>
 
 <!-- Panel Block -->
 <div class="options-panel">
@@ -115,6 +136,20 @@
                 </div>
             </div>
         </div>
+        <!-- Control Item -->
+        <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
+            <div class="content-box">
+                <label for="typo_color">
+                    <?php echo __('Text Color','tornado'); ?>
+                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Theme Design Text Color','tornado'); ?>"></span>
+                </label>
+                <div class="color-picker">
+                    <?php $color_val = get_option('typo_color'); ?>
+                    <input type="text" name="typo_color" value="<?php echo $color_val; ?>" placeholder="<?php echo $color_val; ?>">
+                    <div class="color-prev" style="background-color:<?php echo $color_val; ?>"></div>
+                </div>
+            </div>
+        </div>
         <!-- // Control Item -->
     </div>
 </div>
@@ -132,7 +167,17 @@
                     <?php echo __('Headers Font','tornado'); ?>
                     <span class="ti-help-mark help-btn" data-txt="<?php echo __('Headers and Titles Font Family','tornado'); ?>"></span>
                 </label>
-                <input type="text" name="primary_font" placeholder="<?php echo "'Roboto', sans-serif"; ?>" value="<?php echo get_option('primary_font'); ?>">
+                <select name="primary_font" class="advanced-select">
+                    <?php
+                        foreach ($font_list as $font ) :
+                            //====== Check if Selected ======//
+                            if ($font->family == get_option('primary_font')) {$is_selected = 'selected';} 
+                            else {$is_selected = '';}
+                            //====== Print Font Item ======//
+                            echo '<option value="'.esc_attr($font->family).'" '.$is_selected.'>'.esc_html( $font->family).'</option>';
+                        endforeach;
+                    ?>
+                </select>
             </div>
         </div>
         <!-- Control Item -->
@@ -142,21 +187,117 @@
                     <?php echo __('Normal Font','tornado'); ?>
                     <span class="ti-help-mark help-btn" data-txt="<?php echo __('Normal Text Font Family','tornado'); ?>"></span>
                 </label>
-                <input type="text" name="secondary_font" placeholder="<?php echo "'Roboto', sans-serif"; ?>" value="<?php echo get_option('secondary_font'); ?>">
+                <select name="secondary_font" class="advanced-select">
+                    <?php
+                        foreach ($font_list as $font ) :
+                            //====== Check if Selected ======//
+                            if ($font->family == get_option('secondary_font')) {$is_selected = 'selected';} 
+                            else {$is_selected = '';}
+                            //====== Print Font Item ======//
+                            echo '<option value="'.esc_attr($font->family).'" '.$is_selected.'>'.esc_html( $font->family).'</option>';
+                        endforeach;
+                    ?>
+                </select>
             </div>
         </div>
         <!-- Control Item -->
         <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
             <div class="content-box">
-                <label for="typo_color">
-                    <?php echo __('Text Color','tornado'); ?>
-                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Theme Design Text Color','tornado'); ?>"></span>
+                <label for="primary_font_rtl">
+                    <?php echo __('Headers Font RTL','tornado'); ?>
+                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Headers and Titles Font Family','tornado'); ?>"></span>
                 </label>
-                <div class="color-picker">
-                    <?php $color_val = get_option('typo_color'); ?>
-                    <input type="text" name="typo_color" value="<?php echo $color_val; ?>" placeholder="<?php echo $color_val; ?>">
-                    <div class="color-prev" style="background-color:<?php echo $color_val; ?>"></div>
-                </div>
+                <select name="primary_font_rtl" class="advanced-select">
+                    <?php
+                        foreach ($font_list as $font ) :
+                            //====== Check if Selected ======//
+                            if ($font->family == get_option('primary_font_rtl')) {$is_selected = 'selected';} 
+                            else {$is_selected = '';}
+                            //====== Print Font Item ======//
+                            echo '<option value="'.esc_attr($font->family).'" '.$is_selected.'>'.esc_html( $font->family).'</option>';
+                        endforeach;
+                    ?>
+                </select>
+            </div>
+        </div>
+        <!-- Control Item -->
+        <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
+            <div class="content-box">
+                <label for="secondary_font_rtl">
+                    <?php echo __('Normal Font RTL','tornado'); ?>
+                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Normal Text Font Family','tornado'); ?>"></span>
+                </label>
+                <select name="secondary_font_rtl" class="advanced-select">
+                    <?php
+                        foreach ($font_list as $font ) :
+                            //====== Check if Selected ======//
+                            if ($font->family == get_option('secondary_font_rtl')) {$is_selected = 'selected';} 
+                            else {$is_selected = '';}
+                            //====== Print Font Item ======//
+                            echo '<option value="'.esc_attr($font->family).'" '.$is_selected.'>'.esc_html( $font->family).'</option>';
+                        endforeach;
+                    ?>
+                </select>
+            </div>
+        </div>
+        <!-- Control Item -->
+        <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
+            <div class="content-box">
+                <label for="normal_weight">
+                    <?php echo __('Font Normal Weight','tornado'); ?>
+                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Font Normal/Regular Weight.','tornado'); ?>"></span>
+                </label>
+                <select class="chevron-select" name="normal_weight">
+                    <option value="100" <?php if (get_option('normal_weight') == '100') { echo 'selected'; } ?>>Ultra light</option>
+                    <option value="200" <?php if (get_option('normal_weight') == '200') { echo 'selected'; } ?>>Light</option>
+                    <option value="300" <?php if (get_option('normal_weight') == '300') { echo 'selected'; } ?>>Book</option>
+                    <option value="400" <?php if (get_option('normal_weight') == '400') { echo 'selected'; } ?>>Regular</option>
+                    <option value="500" <?php if (get_option('normal_weight') == '500') { echo 'selected'; } ?>>Medium</option>
+                    <option value="600" <?php if (get_option('normal_weight') == '600') { echo 'selected'; } ?>>Semi-bold</option>
+                    <option value="700" <?php if (get_option('normal_weight') == '700') { echo 'selected'; } ?>>Bold</option>
+                    <option value="800" <?php if (get_option('normal_weight') == '800') { echo 'selected'; } ?>>Heavy</option>
+                    <option value="900" <?php if (get_option('normal_weight') == '900') { echo 'selected'; } ?>>Heavy-black</option>
+                </select>
+            </div>
+        </div>
+        <!-- Control Item -->
+        <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
+            <div class="content-box">
+                <label for="medium_weight">
+                    <?php echo __('Font Medium Weight','tornado'); ?>
+                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Font Medium/Semi-Bold Weight.','tornado'); ?>"></span>
+                </label>
+                <select class="chevron-select" name="normal_weight">
+                    <option value="100" <?php if (get_option('medium_weight') == '100') { echo 'selected'; } ?>>Ultra light</option>
+                    <option value="200" <?php if (get_option('medium_weight') == '200') { echo 'selected'; } ?>>Light</option>
+                    <option value="300" <?php if (get_option('medium_weight') == '300') { echo 'selected'; } ?>>Book</option>
+                    <option value="400" <?php if (get_option('medium_weight') == '400') { echo 'selected'; } ?>>Regular</option>
+                    <option value="500" <?php if (get_option('medium_weight') == '500') { echo 'selected'; } ?>>Medium</option>
+                    <option value="600" <?php if (get_option('medium_weight') == '600') { echo 'selected'; } ?>>Semi-bold</option>
+                    <option value="700" <?php if (get_option('medium_weight') == '700') { echo 'selected'; } ?>>Bold</option>
+                    <option value="800" <?php if (get_option('medium_weight') == '800') { echo 'selected'; } ?>>Heavy</option>
+                    <option value="900" <?php if (get_option('medium_weight') == '900') { echo 'selected'; } ?>>Heavy-black</option>
+                </select>
+            </div>
+        </div>
+        <!-- Control Item -->
+        <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
+            <div class="content-box">
+                <label for="strong_weight">
+                    <?php echo __('Font Bold Weight','tornado'); ?>
+                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Font Bold Weight.','tornado'); ?>"></span>
+                </label>
+                <select class="chevron-select" name="normal_weight">
+                    <option value="100" <?php if (get_option('strong_weight') == '100') { echo 'selected'; } ?>>Ultra light</option>
+                    <option value="200" <?php if (get_option('strong_weight') == '200') { echo 'selected'; } ?>>Light</option>
+                    <option value="300" <?php if (get_option('strong_weight') == '300') { echo 'selected'; } ?>>Book</option>
+                    <option value="400" <?php if (get_option('strong_weight') == '400') { echo 'selected'; } ?>>Regular</option>
+                    <option value="500" <?php if (get_option('strong_weight') == '500') { echo 'selected'; } ?>>Medium</option>
+                    <option value="600" <?php if (get_option('strong_weight') == '600') { echo 'selected'; } ?>>Semi-bold</option>
+                    <option value="700" <?php if (get_option('strong_weight') == '700') { echo 'selected'; } ?>>Bold</option>
+                    <option value="800" <?php if (get_option('strong_weight') == '800') { echo 'selected'; } ?>>Heavy</option>
+                    <option value="900" <?php if (get_option('strong_weight') == '900') { echo 'selected'; } ?>>Heavy-black</option>
+                </select>
             </div>
         </div>
         <!-- Control Item -->
@@ -197,36 +338,6 @@
                     <span class="ti-help-mark help-btn" data-txt="<?php echo __('Font Base Line Hight in points or precentage','tornado'); ?>"></span>
                 </label>
                 <input type="text" name="base_line_height" placeholder="<?php echo '1.658'; ?>" value="<?php echo get_option('base_line_height'); ?>">
-            </div>
-        </div>
-        <!-- Control Item -->
-        <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
-            <div class="content-box">
-                <label for="normal_weight">
-                    <?php echo __('Font Normal Weight','tornado'); ?>
-                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Font Normal/Regular Weight in Numbers.','tornado'); ?>"></span>
-                </label>
-                <input type="text" name="normal_weight" placeholder="<?php echo '400'; ?>" value="<?php echo get_option('normal_weight'); ?>">
-            </div>
-        </div>
-        <!-- Control Item -->
-        <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
-            <div class="content-box">
-                <label for="medium_weight">
-                    <?php echo __('Font Medium Weight','tornado'); ?>
-                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Font Medium/Semi-Bold Weight in Numbers.','tornado'); ?>"></span>
-                </label>
-                <input type="text" name="medium_weight" placeholder="<?php echo '500'; ?>" value="<?php echo get_option('medium_weight'); ?>">
-            </div>
-        </div>
-        <!-- Control Item -->
-        <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
-            <div class="content-box">
-                <label for="strong_weight">
-                    <?php echo __('Font Bold Weight','tornado'); ?>
-                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Font Bold Weight in Numbers.','tornado'); ?>"></span>
-                </label>
-                <input type="text" name="strong_weight" placeholder="<?php echo '700'; ?>" value="<?php echo get_option('strong_weight'); ?>">
             </div>
         </div>
         <!-- // Control Item -->

@@ -6,18 +6,33 @@ const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withInstanceId} = wp.compose;
 /*===== Editable Components =====*/
-const {
-    PlainText,
-    RichText,
-    Editable,
-    MediaUpload,
-    MediaUploadCheck,
-    AlignmentToolbar,
-    BlockControls,
-    ColorPalette
-    InnerBlocks,
-    InspectorControls
-} = wp.blockEditor;
+if (!wp.editor) {
+    const {
+        PlainText,
+        RichText,
+        Editable,
+        MediaUpload,
+        MediaUploadCheck,
+        AlignmentToolbar,
+        BlockControls,
+        ColorPalette
+        InnerBlocks,
+        InspectorControls
+    } = wp.blockEditor;
+} else {
+    const {
+        PlainText,
+        RichText,
+        Editable,
+        MediaUpload,
+        MediaUploadCheck,
+        AlignmentToolbar,
+        BlockControls,
+        ColorPalette
+        InnerBlocks,
+        InspectorControls
+    } = wp.editor;
+}
 
 /*===== Editor Components =====*/
 const {
@@ -36,7 +51,12 @@ const {
 } = wp.components;
 
 /*===== Editor Server Render =====*/
-const ServerSideRender = wp.serverSideRender;
+if (!wp.components.serverSideRender) {
+    const ServerSideRender = wp.components.serverSideRender;
+} else {
+    /*===== Editor Server Render =====*/
+    const ServerSideRender = wp.serverSideRender;
+}
 /*===== Editor Elements Components =====*/
 const {Component, Fragment} = wp.element;
 /*===== Editor Dynamic Data =====*/

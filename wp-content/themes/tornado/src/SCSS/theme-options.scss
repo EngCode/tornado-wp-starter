@@ -268,12 +268,13 @@ $xlarge-query-down:1600px; // Big Desktop Screen Size to start from
             }
 
             /*==== Input and Selects ====*/
-            input,select,.form-control,textarea,.media-uploader-control,.control-wraper,.color-picker {
+            input,select,.form-control,textarea,.media-uploader-control,.control-wraper,.color-picker,.advanced-select {
                 width:calc(100% - 175px);
                 margin: 0;
                 margin-bottom: 15px;
             }
 
+            /*==== Color Pickre ====*/
             .color-picker {
                 direction: ltr;
                 @extend %flexbox;
@@ -312,13 +313,14 @@ $xlarge-query-down:1600px; // Big Desktop Screen Size to start from
                 }
             }
 
+            /*==== Wraped Controler ====*/
             .control-wraper {
                 input,select,.form-control,textarea,.media-uploader-control{width:100%;}
                 max-width:640px;
                 margin-left: auto;
             }
 
-            input,select,.form-control {
+            input,select,.form-control,.ss-main .ss-single-selected {
                 height: 34px;
                 line-height: 1;
                 padding: 0 15px;

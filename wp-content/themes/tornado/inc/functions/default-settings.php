@@ -71,11 +71,11 @@
 
             //=====> Default Design Fonts Options <=====//
             if(!get_option('primary_font')) {
-                update_option('primary_font', "'DIN NEXT'");
+                update_option('primary_font', "DIN NEXT");
             }
 
             if(!get_option('secondary_font')) {
-                update_option('secondary_font', "'DIN NEXT'");
+                update_option('secondary_font', "DIN NEXT");
             }
 
             if(!get_option('base_l_size')) {
@@ -91,7 +91,7 @@
             }
 
             if(!get_option('base_line_height')) {
-                update_option('base_line_height', '1.4');
+                update_option('base_line_height', '1.625');
             }
 
             if(!get_option('normal_weight')) {

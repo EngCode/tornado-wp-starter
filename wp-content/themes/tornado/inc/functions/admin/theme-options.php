@@ -55,6 +55,8 @@
         //=========> Design => Fonts <=========//
         register_setting('tornado-options', 'primary_font');
         register_setting('tornado-options', 'secondary_font');
+        register_setting('tornado-options', 'primary_font_rtl');
+        register_setting('tornado-options', 'secondary_font_rtl');
         register_setting('tornado-options', 'base_l_size');
         register_setting('tornado-options', 'base_m_size');
         register_setting('tornado-options', 'base_s_size');
@@ -121,67 +123,17 @@
 </div>
 <!-- // Theme Options -->
 
-<!-- Media Uploader Popup -->
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        //===== Runs when the image button is clicked =====//
-        $('.uploader-btn').click(function (e) {
-            e.preventDefault();
-            //===== Instantiates the variable that holds the media library =====//
-            var meta_image_frame;
-            //===== Get preview Input =====//
-            var meta_image = $(this).parents('.media-uploader-control').find('.uploader-input'),
-                imagePrev = $(this).parents('.media-uploader-control').find('.image-prev');
-            //===== If the media library already exists, re-open it =====//
-            if (meta_image_frame) { meta_image_frame.open(); return; }
-            //===== Sets up the media library =====//
-            meta_image_frame = wp.media.frames.meta_image_frame = wp.media({
-                title: meta_image.title,
-                button: { text: meta_image.button }
-            });
-            //===== Runs when an media is selected =====//
-            meta_image_frame.on('select', function () {
-                //===== Grabs the Selection and creates a JSON representation of the model =====//
-                var media_attachment = meta_image_frame.state().get('selection').first().toJSON();
-                //===== Sends the attachment URL to the media input field =====//
-                meta_image.val(media_attachment.url);
-                imagePrev.attr('src',media_attachment.url);
-            });
-            //===== Opens the media library =====//
-            meta_image_frame.open();
-        });
-    });
-</script>
-
-<!-- Color Picker -->
+<!-- Code Mirror -->
+<script src="https://codemirror.net/lib/codemirror.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.0/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/mode/htmlmixed/htmlmixed.min.js"></script>
+<!-- Slim Select -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.js"></script>
+<!-- Custom JS -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         'use strict';
-        /*============ Select Color Picker Elements ==============*/
-        var color_pickers = document.querySelectorAll('.color-picker');
-        Array.from(color_pickers).forEach(element => {
-            var pickerInput = element.querySelector('input'),
-                pickerBackground = element.querySelector('.color-prev'),
-                defaultColor = pickerInput.getAttribute('placeholder');
 
-            var picker = new Picker(element);
-
-            //==== Set Default =====//
-            picker.setColor(defaultColor)
-            pickerInput.value = defaultColor;
-
-            // You can do what you want with the chosen color using two callbacks: onChange and onDone.
-            picker.onChange = function(color) {
-                pickerBackground.style.background = color.hex;
-                pickerInput.value = color.hex;
-            };
-        });
-    });
-</script>
-
-<!-- Tabs Hack -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
         //========> get Tabs Elements <========//
         var tab_btns = document.querySelectorAll('[data-tab]'),
             tabs_content = document.querySelectorAll('.tab-content');
@@ -220,11 +172,64 @@
                 }, 200);
             });
         }
+
+        /*============ Select Color Picker Elements ==============*/
+        var color_pickers = document.querySelectorAll('.color-picker');
+        Array.from(color_pickers).forEach(element => {
+            var pickerInput = element.querySelector('input'),
+                pickerBackground = element.querySelector('.color-prev'),
+                defaultColor = pickerInput.getAttribute('placeholder');
+
+            var picker = new Picker(element);
+
+            //==== Set Default =====//
+            picker.setColor(defaultColor)
+            pickerInput.value = defaultColor;
+
+            // You can do what you want with the chosen color using two callbacks: onChange and onDone.
+            picker.onChange = function(color) {
+                pickerBackground.style.background = color.hex;
+                pickerInput.value = color.hex;
+            };
+        });
+
+        /*============ Advanced Select ==============*/
+        var advancedSelect = document.querySelectorAll('.advanced-select');
+        Array.from(advancedSelect).forEach((element,index) => {
+            element.setAttribute('id','slime-selector-n'+index);
+            new SlimSelect({
+                select: '#slime-selector-n'+index,
+            });
+        });
+    });
+    //===== Media Uploader Popup =====//
+    jQuery(document).ready(function ($) {
+        //===== Runs when the image button is clicked =====//
+        $('.uploader-btn').click(function (e) {
+            e.preventDefault();
+            //===== Instantiates the variable that holds the media library =====//
+            var meta_image_frame;
+            //===== Get preview Input =====//
+            var meta_image = $(this).parents('.media-uploader-control').find('.uploader-input'),
+                imagePrev = $(this).parents('.media-uploader-control').find('.image-prev');
+            //===== If the media library already exists, re-open it =====//
+            if (meta_image_frame) { meta_image_frame.open(); return; }
+            //===== Sets up the media library =====//
+            meta_image_frame = wp.media.frames.meta_image_frame = wp.media({
+                title: meta_image.title,
+                button: { text: meta_image.button }
+            });
+            //===== Runs when an media is selected =====//
+            meta_image_frame.on('select', function () {
+                //===== Grabs the Selection and creates a JSON representation of the model =====//
+                var media_attachment = meta_image_frame.state().get('selection').first().toJSON();
+                //===== Sends the attachment URL to the media input field =====//
+                meta_image.val(media_attachment.url);
+                imagePrev.attr('src',media_attachment.url);
+            });
+            //===== Opens the media library =====//
+            meta_image_frame.open();
+        });
     });
 </script>
-
-<!-- Code Mirror -->
-<script src="https://codemirror.net/lib/codemirror.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.0/mode/xml/xml.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.0/mode/htmlmixed/htmlmixed.min.js"></script>
 <?php } ?>
