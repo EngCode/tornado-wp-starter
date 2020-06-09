@@ -91,16 +91,38 @@
                     /*======== Primary Color ========*/
                     --primary-color: <?php echo get_option('primary_color'); ?>;
                     --primary-color-hover: <?php echo get_option('primary_color_hover'); ?>;
+                    --dark-primary: <?php echo get_option('dark_primary'); ?>;
                     /*======== Secondary Color ========*/
                     --secondary-color: '<?php echo get_option('secondary_color'); ?>';
                     --secondary-color-hover: '<?php echo get_option('secondary_color_hover'); ?>';
                     /*======== TXT Color ========*/
                     --typo-color:<?php echo get_option('typo_color'); ?>;
                     /*========== Typography Font Family ==========*/
-                    /* font family for Head's and Titles */
-                    --primary-font:<?php echo get_option('primary_font'); ?>;
-                    /* font family for Paragraph and Small Text */
-                    --secondary-font:<?php echo get_option('secondary_font'); ?>;
+                    <?php if (get_option('google_fonts') === '1') : ?>
+                        <?php if (!is_rtl()) : ?>
+                        /* font family for Head's and Titles */
+                        --primary-font:'<?php echo get_option('primary_font'); ?>';
+                        /* font family for Paragraph and Small Text */
+                        --secondary-font:'<?php echo get_option('secondary_font'); ?>';
+                        <?php else : ?>;
+                        /* font family for Head's and Titles */
+                        --primary-font:'<?php echo get_option('primary_font_rtl'); ?>';
+                        /* font family for Paragraph and Small Text */
+                        --secondary-font:'<?php echo get_option('secondary_font_rtl'); ?>';
+                        <?php endif; ?>
+                    <?php else : ?>;
+                        <?php if (!is_rtl()) : ?>
+                        /* font family for Head's and Titles */
+                        --primary-font:'<?php echo get_option('custom_primary_font'); ?>';
+                        /* font family for Paragraph and Small Text */
+                        --secondary-font:'<?php echo get_option('custom_secondary_font'); ?>';
+                        <?php else : ?>;
+                        /* font family for Head's and Titles */
+                        --primary-font:'<?php echo get_option('custom_primary_font_rtl'); ?>';
+                        /* font family for Paragraph and Small Text */
+                        --secondary-font:'<?php echo get_option('custom_secondary_font_rtl'); ?>';
+                        <?php endif; ?>
+                    <?php endif; ?>
                     /*========== Typography Base Font Sizes ==========*/
                     /* Base Font Size For Large Screens */
                     --base-l-size:<?php echo get_option('base_l_size'); ?>;
@@ -123,24 +145,26 @@
     }
 
     //==== Include Google Fonts =====//
-    add_action( 'wp_enqueue_scripts', 'tornado_google_fonts' );
-    function tornado_google_fonts() {
-        //========== Get Fonts Names ==========//
-        if(!is_rtl()) {
-            $headers_font = str_replace( ' ', '+',  get_option('primary_font') );
-            $normal_font = str_replace( ' ', '+',  get_option('secondary_font') );
-        } else {
-            $headers_font = str_replace( ' ', '+',  get_option('primary_font_rtl') );
-            $normal_font = str_replace( ' ', '+',  get_option('secondary_font_rtl') );
-        }
-        //========== Create Fonts Url ==========//
-        $headers_font_url = 'https://fonts.googleapis.com/css?family=' . $headers_font;
-        $normal_font_url = 'https://fonts.googleapis.com/css?family=' . $normal_font;
-        //========== Include Primary Font ==========//
-        wp_enqueue_style( 'primary-font', $headers_font_url );
-        //========== Include Secondary Font ==========//
-        if ($headers_font !== $normal_font) {
-            wp_enqueue_style( 'secondary-font', $normal_font_url );
+    if (get_option('google_fonts') === '1') {
+        add_action( 'wp_enqueue_scripts', 'tornado_google_fonts' );
+        function tornado_google_fonts() {
+            //========== Get Fonts Names ==========//
+            if(!is_rtl()) {
+                $headers_font = str_replace( ' ', '+',  get_option('primary_font') );
+                $normal_font = str_replace( ' ', '+',  get_option('secondary_font') );
+            } else {
+                $headers_font = str_replace( ' ', '+',  get_option('primary_font_rtl') );
+                $normal_font = str_replace( ' ', '+',  get_option('secondary_font_rtl') );
+            }
+            //========== Create Fonts Url ==========//
+            $headers_font_url = 'https://fonts.googleapis.com/css?family=' . $headers_font;
+            $normal_font_url = 'https://fonts.googleapis.com/css?family=' . $normal_font;
+            //========== Include Primary Font ==========//
+            wp_enqueue_style( 'primary-font', $headers_font_url );
+            //========== Include Secondary Font ==========//
+            if ($headers_font !== $normal_font) {
+                wp_enqueue_style( 'secondary-font', $normal_font_url );
+            }
         }
     }
 ?>

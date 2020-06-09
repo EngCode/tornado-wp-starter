@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tornado Starter Theme\n"
-"POT-Creation-Date: 2020-06-05 19:19+0200\n"
-"PO-Revision-Date: 2020-06-05 19:25+0200\n"
+"POT-Creation-Date: 2020-06-08 22:53+0200\n"
+"PO-Revision-Date: 2020-06-08 22:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -100,7 +100,7 @@ msgid "Menus Settings"
 msgstr "إعدادات القوائم"
 
 #: inc/functions/admin/options-tabs/01-General.php:12
-#: inc/functions/admin/theme-options.php:79
+#: inc/functions/admin/theme-options.php:86
 msgid "General Settings"
 msgstr "الإعدادات العامة"
 
@@ -159,7 +159,7 @@ msgid "this code will be added before </body> closing tag"
 msgstr "سيتم إضافة هذا الكود قبل اغلاق وسم </body> جسم الصفحة"
 
 #: inc/functions/admin/options-tabs/02-Contact.php:12
-#: inc/functions/admin/theme-options.php:80
+#: inc/functions/admin/theme-options.php:87
 msgid "Contact Info"
 msgstr "معلومات التواصل"
 
@@ -243,140 +243,172 @@ msgstr "رابط لينكد إن"
 msgid "https://linkedin.com/@username"
 msgstr ""
 
-#: inc/functions/admin/options-tabs/03-Design.php:12
-#: inc/functions/admin/theme-options.php:81
+#: inc/functions/admin/options-tabs/03-Design.php:28
+#: inc/functions/admin/theme-options.php:88
 msgid "Design Options"
 msgstr "إعدادات التصميم"
 
-#: inc/functions/admin/options-tabs/03-Design.php:18
+#: inc/functions/admin/options-tabs/03-Design.php:41
 msgid "Logo and Colors"
 msgstr "اللوجو والالوان"
 
-#: inc/functions/admin/options-tabs/03-Design.php:23
+#: inc/functions/admin/options-tabs/03-Design.php:46
 msgid "Theme Logo"
 msgstr "لوجو الموقع"
 
-#: inc/functions/admin/options-tabs/03-Design.php:44
+#: inc/functions/admin/options-tabs/03-Design.php:67
 msgid "Theme Logo Mobile"
 msgstr "لوجو الموقع للموبايل"
 
-#: inc/functions/admin/options-tabs/03-Design.php:66
+#: inc/functions/admin/options-tabs/03-Design.php:89
 msgid "Primary Color"
 msgstr "اللون الاساسي"
 
-#: inc/functions/admin/options-tabs/03-Design.php:67
+#: inc/functions/admin/options-tabs/03-Design.php:90
 msgid "Theme Design Primary Color"
 msgstr "اللون الأساسي للتصميم"
 
-#: inc/functions/admin/options-tabs/03-Design.php:80
+#: inc/functions/admin/options-tabs/03-Design.php:103
 msgid "Primary Hover"
 msgstr "تأثير اللون الاساسي"
 
-#: inc/functions/admin/options-tabs/03-Design.php:81
+#: inc/functions/admin/options-tabs/03-Design.php:104
 msgid "Theme Design Primary Hover Effect Color"
 msgstr "تأثير اللون الأساسي عند مرور الماوس"
 
-#: inc/functions/admin/options-tabs/03-Design.php:94
+#: inc/functions/admin/options-tabs/03-Design.php:117
 msgid "Secondary Color"
 msgstr "اللون الثانوي"
 
-#: inc/functions/admin/options-tabs/03-Design.php:95
+#: inc/functions/admin/options-tabs/03-Design.php:118
 msgid "Theme Design Secondary Color"
 msgstr "اللون الثانوي للتصميم"
 
-#: inc/functions/admin/options-tabs/03-Design.php:108
+#: inc/functions/admin/options-tabs/03-Design.php:131
 msgid "Secondary Hover"
 msgstr "تأثير اللون الثانوي"
 
-#: inc/functions/admin/options-tabs/03-Design.php:109
+#: inc/functions/admin/options-tabs/03-Design.php:132
 msgid "Theme Design Secondary Hover Effect Color"
 msgstr "تأثير اللون الثانوي عند مرور الماوس"
 
-#: inc/functions/admin/options-tabs/03-Design.php:126
-msgid "Font Options"
-msgstr "إعدادات الخطوط"
-
-#: inc/functions/admin/options-tabs/03-Design.php:132
-msgid "Headers Font"
-msgstr "نوع خط العناوين"
-
-#: inc/functions/admin/options-tabs/03-Design.php:133
-msgid "Headers and Titles Font Family"
-msgstr "اسم عائلة خط العناوين"
-
-#: inc/functions/admin/options-tabs/03-Design.php:142
-msgid "Normal Font"
-msgstr "نوع الخط العادي"
-
-#: inc/functions/admin/options-tabs/03-Design.php:143
-msgid "Normal Text Font Family"
-msgstr "اسم عائلة الخط العادي لباقي القطع الكتابية"
-
-#: inc/functions/admin/options-tabs/03-Design.php:152
+#: inc/functions/admin/options-tabs/03-Design.php:145
 msgid "Text Color"
 msgstr "لون النصوص"
 
-#: inc/functions/admin/options-tabs/03-Design.php:153
+#: inc/functions/admin/options-tabs/03-Design.php:146
 msgid "Theme Design Text Color"
 msgstr "لون النصوص الافتراضى للتصميم"
 
-#: inc/functions/admin/options-tabs/03-Design.php:166
-msgid "Font Size"
-msgstr "حجم الخط الاساسي"
+#: inc/functions/admin/options-tabs/03-Design.php:163
+msgid "Font Options"
+msgstr "إعدادات الخطوط"
 
-#: inc/functions/admin/options-tabs/03-Design.php:167
-msgid "Desktop Base Font Size in px"
-msgstr "حجم الخط الأساسي لشاشات الديسك توب بالبيكسل"
+#: inc/functions/admin/options-tabs/03-Design.php:169
+msgid "Google Fonts"
+msgstr "خطوط جوجل"
 
-#: inc/functions/admin/options-tabs/03-Design.php:176
-msgid "Tablet Font Size"
-msgstr "حجم خط التابلت"
+#: inc/functions/admin/options-tabs/03-Design.php:170
+msgid "Enable/Disable Google Fonts"
+msgstr "تفعيل او تعطيل خطوط جوجل"
 
-#: inc/functions/admin/options-tabs/03-Design.php:177
-msgid "Tablet Base Font Size in px"
-msgstr "حجم الخط الأساسي لشاشات التابلت بالبيكسل"
+#: inc/functions/admin/options-tabs/03-Design.php:182
+#: inc/functions/admin/options-tabs/03-Design.php:270
+msgid "Headers Font"
+msgstr "نوع خط العناوين"
 
-#: inc/functions/admin/options-tabs/03-Design.php:186
-msgid "Mobile Font Size"
-msgstr "حجم خط الموبايل"
+#: inc/functions/admin/options-tabs/03-Design.php:183
+#: inc/functions/admin/options-tabs/03-Design.php:227
+#: inc/functions/admin/options-tabs/03-Design.php:271
+msgid "Headers and Titles Font Family"
+msgstr "اسم عائلة خط العناوين"
 
-#: inc/functions/admin/options-tabs/03-Design.php:187
-msgid "Mobile Base Font Size in px"
-msgstr "حجم الخط الأساسي لشاشات الموبايل بالبيكسل"
+#: inc/functions/admin/options-tabs/03-Design.php:204
+#: inc/functions/admin/options-tabs/03-Design.php:280
+msgid "Normal Font"
+msgstr "نوع الخط العادي"
 
-#: inc/functions/admin/options-tabs/03-Design.php:196
-msgid "Font Line-Height"
-msgstr "طول سطر النصوص"
+#: inc/functions/admin/options-tabs/03-Design.php:205
+#: inc/functions/admin/options-tabs/03-Design.php:249
+#: inc/functions/admin/options-tabs/03-Design.php:281
+msgid "Normal Text Font Family"
+msgstr "اسم عائلة الخط العادي لباقي القطع الكتابية"
 
-#: inc/functions/admin/options-tabs/03-Design.php:197
-msgid "Font Base Line Hight in points or precentage"
-msgstr "طول سطر النصوص والمسافة بين السطر والاخر"
+#: inc/functions/admin/options-tabs/03-Design.php:226
+#: inc/functions/admin/options-tabs/03-Design.php:290
+msgid "Headers Font RTL"
+msgstr "نوع خط العناوين للـRTL"
 
-#: inc/functions/admin/options-tabs/03-Design.php:206
+#: inc/functions/admin/options-tabs/03-Design.php:248
+#: inc/functions/admin/options-tabs/03-Design.php:300
+msgid "Normal Font RTL"
+msgstr "نوع الخط العادي للـRTL"
+
+#: inc/functions/admin/options-tabs/03-Design.php:291
+msgid "Headers and Titles Font Family RTL"
+msgstr "اسم عائلة خط العناوين للــ RTL"
+
+#: inc/functions/admin/options-tabs/03-Design.php:301
+msgid "Normal Text Font Family RTL"
+msgstr "اسم عائلة الخط العادي لباقي القطع الكتابية  للــ RTL"
+
+#: inc/functions/admin/options-tabs/03-Design.php:310
 msgid "Font Normal Weight"
 msgstr "وزن الخط العادي"
 
-#: inc/functions/admin/options-tabs/03-Design.php:207
-msgid "Font Normal/Regular Weight in Numbers."
-msgstr "الوزن العادي للخطوط والنصوص بالارقام"
+#: inc/functions/admin/options-tabs/03-Design.php:311
+msgid "Font Normal/Regular Weight."
+msgstr "الوزن العادي للخطوط والنصوص بالارقام."
 
-#: inc/functions/admin/options-tabs/03-Design.php:216
+#: inc/functions/admin/options-tabs/03-Design.php:330
 msgid "Font Medium Weight"
 msgstr "وزن الخط المتوسط"
 
-#: inc/functions/admin/options-tabs/03-Design.php:217
-msgid "Font Medium/Semi-Bold Weight in Numbers."
-msgstr "الوزن المتوسط للخطوط والنصوص بالارقام"
+#: inc/functions/admin/options-tabs/03-Design.php:331
+msgid "Font Medium/Semi-Bold Weight."
+msgstr "الوزن المتوسط للخطوط والنصوص بالارقام."
 
-#: inc/functions/admin/options-tabs/03-Design.php:226
+#: inc/functions/admin/options-tabs/03-Design.php:350
 msgid "Font Bold Weight"
 msgstr "وزن الخط السميك"
 
-#: inc/functions/admin/options-tabs/03-Design.php:227
-msgid "Font Bold Weight in Numbers."
-msgstr "الوزن السميك للخطوط والنصوص بالارقام"
+#: inc/functions/admin/options-tabs/03-Design.php:351
+msgid "Font Bold Weight."
+msgstr "وزن الخط السميك."
 
-#: inc/functions/admin/theme-options.php:114
+#: inc/functions/admin/options-tabs/03-Design.php:370
+msgid "Font Size"
+msgstr "حجم الخط الاساسي"
+
+#: inc/functions/admin/options-tabs/03-Design.php:371
+msgid "Desktop Base Font Size in px"
+msgstr "حجم الخط الأساسي لشاشات الديسك توب بالبيكسل"
+
+#: inc/functions/admin/options-tabs/03-Design.php:380
+msgid "Tablet Font Size"
+msgstr "حجم خط التابلت"
+
+#: inc/functions/admin/options-tabs/03-Design.php:381
+msgid "Tablet Base Font Size in px"
+msgstr "حجم الخط الأساسي لشاشات التابلت بالبيكسل"
+
+#: inc/functions/admin/options-tabs/03-Design.php:390
+msgid "Mobile Font Size"
+msgstr "حجم خط الموبايل"
+
+#: inc/functions/admin/options-tabs/03-Design.php:391
+msgid "Mobile Base Font Size in px"
+msgstr "حجم الخط الأساسي لشاشات الموبايل بالبيكسل"
+
+#: inc/functions/admin/options-tabs/03-Design.php:400
+msgid "Font Line-Height"
+msgstr "طول سطر النصوص"
+
+#: inc/functions/admin/options-tabs/03-Design.php:401
+msgid "Font Base Line Hight in points or precentage"
+msgstr "طول سطر النصوص والمسافة بين السطر والاخر"
+
+#: inc/functions/admin/theme-options.php:121
 msgid "Powered by Tornado UI v2 Framework © 2016 - 2020"
 msgstr "مدعوم من Tornado UI v2 Framework © 2016-2020"
 
@@ -462,7 +494,7 @@ msgid "Abdullah Ramadan"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://flash-point.net"
+msgid "https://phenixthemes.com"
 msgstr ""
 
 #. Template Name of the plugin/theme
@@ -480,6 +512,9 @@ msgstr ""
 #. Template Name of the plugin/theme
 msgid "Default Rich Content"
 msgstr ""
+
+#~ msgid "Font Bold Weight in Numbers."
+#~ msgstr "الوزن السميك للخطوط والنصوص بالارقام"
 
 #~ msgid "Select"
 #~ msgstr "اختيار"

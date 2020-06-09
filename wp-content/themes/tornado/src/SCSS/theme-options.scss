@@ -268,10 +268,58 @@ $xlarge-query-down:1600px; // Big Desktop Screen Size to start from
             }
 
             /*==== Input and Selects ====*/
-            input,select,.form-control,textarea,.media-uploader-control,.control-wraper,.color-picker,.advanced-select {
+            input,select,.form-control,textarea,.media-uploader-control,.control-wraper,.color-picker,.advanced-select,.toggle-button {
                 width:calc(100% - 175px);
                 margin: 0;
                 margin-bottom: 15px;
+            }
+
+            /*==== Toggle Button ====*/
+            .toggle-button {
+                position: relative;
+                cursor: pointer;
+                padding:0 15px;
+                input{
+                    position: absolute;
+                    top:0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+                span {
+                    position: relative;
+                    transition: all 0.3s;
+                    width:60px;
+                    height: 10px;
+                    border-radius: 10px;
+                    background-color: #ccc;
+                    display: block;
+                    margin-left: auto;
+                    margin-top: 12px;
+                    &::before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        width:20px;
+                        height: 20px;
+                        background-color: #929292;
+                        top:50%;
+                        transform: translateY(-50%);
+                        transition: all 0.3s;
+                        border-radius: 50%;
+                    }
+                }
+                input:checked + span {
+                    background-color: #4166d6;
+                    &::before {
+                        background-color: #163db4;
+                        left: 100%;
+                        margin-left: -10px;
+                    }
+                }
             }
 
             /*==== Color Pickre ====*/
@@ -444,6 +492,15 @@ $xlarge-query-down:1600px; // Big Desktop Screen Size to start from
                         left: auto;
                         right: 0;
                     }
+                }
+
+                .toggle-button {
+                    span {
+                        margin-right: auto;
+                        margin-left: 0;
+                        &::before {right: 0;left: auto;}
+                    }
+                    input:checked + span::before {right: 100%;left: auto;}
                 }
             }
 

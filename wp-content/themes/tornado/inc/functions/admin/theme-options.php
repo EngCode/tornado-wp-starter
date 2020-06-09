@@ -52,11 +52,18 @@
         register_setting('tornado-options', 'secondary_color');
         register_setting('tornado-options', 'secondary_color_hover');
         register_setting('tornado-options', 'typo_color');
-        //=========> Design => Fonts <=========//
+        //=========> Design => Fonts GF <=========//
+        register_setting('tornado-options', 'google_fonts');
         register_setting('tornado-options', 'primary_font');
         register_setting('tornado-options', 'secondary_font');
         register_setting('tornado-options', 'primary_font_rtl');
         register_setting('tornado-options', 'secondary_font_rtl');
+        //=========> Design => Custom Fonts <=========//
+        register_setting('tornado-options', 'custom_primary_font');
+        register_setting('tornado-options', 'custom_secondary_font');
+        register_setting('tornado-options', 'custom_primary_font_rtl');
+        register_setting('tornado-options', 'custom_secondary_font_rtl');
+        //=========> Design => Fonts Options <=========//
         register_setting('tornado-options', 'base_l_size');
         register_setting('tornado-options', 'base_m_size');
         register_setting('tornado-options', 'base_s_size');
@@ -147,30 +154,31 @@
         });
 
         //========> get Tab Id from URL <========//
-        var current_tab_id = window.location.hash.substr(1),
-            current_tab = document.querySelector('#'+current_tab_id);
-
-        if (current_tab.classList.contains('tab-content')) {
-            Array.from(tabs_content).forEach(tab => {
-                var tab_id = tab.getAttribute('id');
-                //=======> Active Button <========//
-                Array.from(tab_btns).forEach(btn => {
-                    var btn_id = btn.getAttribute('data-tab');
-                    if(btn_id == current_tab_id) {
-                        btn.classList.add('active'); 
-                    } else {
-                        btn.classList.remove('active');
-                    }
+        var current_tab_id = window.location.hash.substr(1);
+        if (current_tab_id) {
+            var current_tab = document.querySelector('#'+current_tab_id);
+            if (current_tab.classList.contains('tab-content')) {
+                Array.from(tabs_content).forEach(tab => {
+                    var tab_id = tab.getAttribute('id');
+                    //=======> Active Button <========//
+                    Array.from(tab_btns).forEach(btn => {
+                        var btn_id = btn.getAttribute('data-tab');
+                        if(btn_id == current_tab_id) {
+                            btn.classList.add('active'); 
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
+                    //=======> Active Tab <========//
+                    setTimeout(() => {
+                        if(tab_id == current_tab_id) {
+                            tab.classList.add('active');
+                        } else {
+                            tab.classList.remove('active');
+                        }
+                    }, 200);
                 });
-                //=======> Active Tab <========//
-                setTimeout(() => {
-                    if(tab_id == current_tab_id) {
-                        tab.classList.add('active');
-                    } else {
-                        tab.classList.remove('active');
-                    }
-                }, 200);
-            });
+            }
         }
 
         /*============ Select Color Picker Elements ==============*/
@@ -202,6 +210,32 @@
                 select: selectorID,
             });
         });
+
+        /*============ Google Fonts Controler ==============*/
+        var googleFontsStatus = document.querySelector('#google-fonts-status');
+        if (googleFontsStatus) {
+            googleFontsStatus.addEventListener('change', event => {
+                var googleFontsControls = document.querySelectorAll('.google-fonts-controler'),
+                    customFontsControls = document.querySelectorAll('.custom-fonts-controler');
+                //======== If Google Fonts On ==========//
+                if (googleFontsStatus.checked) {
+                    Array.from(googleFontsControls).forEach(element => {
+                        element.classList.remove('hidden');
+                    });
+                    Array.from(customFontsControls).forEach(element => {
+                        element.classList.add('hidden');
+                    });
+                //======== If Google Fonts Off ==========//
+                } else {
+                    Array.from(googleFontsControls).forEach(element => {
+                        element.classList.add('hidden');
+                    });
+                    Array.from(customFontsControls).forEach(element => {
+                        element.classList.remove('hidden');
+                    });
+                }
+            });
+        }
     });
     //===== Media Uploader Popup =====//
     jQuery(document).ready(function ($) {

@@ -5,20 +5,22 @@
     */
     //======= Exit if Try to Access Directly =======//
     defined('ABSPATH') || exit;
-    //====== Google Fonts API Info =======//
-    $google_fonts_api = "AIzaSyASxx2HUwsHJ0gXmEi5V1xJyBI6WeTq8Hk";
-    $google_fonts_url = 'https://www.googleapis.com/webfonts/v1/webfonts?key=' . $google_fonts_api;
-    $google_fonts_args = array(
-        'timeout'     => 15,
-        'redirection' => 10,
-        'httpversion' => '1.0',
-    );
-    //====== Fetch Google Fonts =======//
-    $google_fonts_response = wp_remote_get( $google_fonts_url, $google_fonts_args );
-    //====== Decode Google Fonts Json =======//
-    $google_fonts_body = json_decode($google_fonts_response['body']);
-    //====== get the Fonts List Array =======//
-    $font_list = $google_fonts_body->items;
+    if (get_option('google_fonts') === '1') {
+        //====== Google Fonts API Info =======//
+        $google_fonts_api = "AIzaSyASxx2HUwsHJ0gXmEi5V1xJyBI6WeTq8Hk";
+        $google_fonts_url = 'https://www.googleapis.com/webfonts/v1/webfonts?key=' . $google_fonts_api;
+        $google_fonts_args = array(
+            'timeout'     => 15,
+            'redirection' => 10,
+            'httpversion' => '1.0',
+        );
+        //====== Fetch Google Fonts =======//
+        $google_fonts_response = wp_remote_get( $google_fonts_url, $google_fonts_args );
+        //====== Decode Google Fonts Json =======//
+        $google_fonts_body = json_decode($google_fonts_response['body']);
+        //====== get the Fonts List Array =======//
+        $font_list = $google_fonts_body->items;
+    }
 ?>
 
 <!-- Page Head -->
@@ -28,7 +30,7 @@
 
 <?php
     //=========== Google Fonts Error ===========//
-    if (is_wp_error($google_fonts_response)) :
+    if (get_option('google_fonts') === '1' && is_wp_error($google_fonts_response)) :
         echo '<div class="alert danger">'.esc_html( $google_fonts_response->get_error_message()).'</div>';
     endif;
 ?>
@@ -164,24 +166,39 @@
         <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
             <div class="content-box">
                 <label for="primary_font">
+                    <?php echo __('Google Fonts','tornado'); ?>
+                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Enable/Disable Google Fonts','tornado'); ?>"></span>
+                </label>
+                <label class="toggle-button">
+                    <input type="checkbox" name="google_fonts" id="google-fonts-status" value="1" <?php checked(1, get_option('google_fonts'), true); ?>>
+                    <span></span>
+                </label>
+            </div>
+        </div>
+        <!-- Control Item -->
+        <div class="control-item col-12 col-l-6 <?php if (get_option('google_fonts') !== '1') { echo 'hidden'; } ?> google-fonts-controler <?php if (is_rtl()) { echo 'rtl'; }?>">
+            <div class="content-box">
+                <label for="primary_font">
                     <?php echo __('Headers Font','tornado'); ?>
                     <span class="ti-help-mark help-btn" data-txt="<?php echo __('Headers and Titles Font Family','tornado'); ?>"></span>
                 </label>
                 <select name="primary_font" class="advanced-select">
                     <?php
-                        foreach ($font_list as $font ) :
-                            //====== Check if Selected ======//
-                            if ($font->family == get_option('primary_font')) {$is_selected = 'selected';} 
-                            else {$is_selected = '';}
-                            //====== Print Font Item ======//
-                            echo '<option value="'.esc_attr($font->family).'" '.$is_selected.'>'.esc_html( $font->family).'</option>';
-                        endforeach;
+                        if (get_option('google_fonts') === '1') :
+                            foreach ($font_list as $font ) :
+                                //====== Check if Selected ======//
+                                if ($font->family == get_option('primary_font')) {$is_selected = 'selected';} 
+                                else {$is_selected = '';}
+                                //====== Print Font Item ======//
+                                echo '<option value="'.esc_attr($font->family).'" '.$is_selected.'>'.esc_html( $font->family).'</option>';
+                            endforeach;
+                        endif;
                     ?>
                 </select>
             </div>
         </div>
         <!-- Control Item -->
-        <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
+        <div class="control-item col-12 col-l-6 <?php if (get_option('google_fonts') !== '1') { echo 'hidden'; } ?> google-fonts-controler <?php if (is_rtl()) { echo 'rtl'; }?>">
             <div class="content-box">
                 <label for="secondary_font">
                     <?php echo __('Normal Font','tornado'); ?>
@@ -189,19 +206,21 @@
                 </label>
                 <select name="secondary_font" class="advanced-select">
                     <?php
-                        foreach ($font_list as $font ) :
-                            //====== Check if Selected ======//
-                            if ($font->family == get_option('secondary_font')) {$is_selected = 'selected';} 
-                            else {$is_selected = '';}
-                            //====== Print Font Item ======//
-                            echo '<option value="'.esc_attr($font->family).'" '.$is_selected.'>'.esc_html( $font->family).'</option>';
-                        endforeach;
+                        if (get_option('google_fonts') === '1') :
+                            foreach ($font_list as $font ) :
+                                //====== Check if Selected ======//
+                                if ($font->family == get_option('secondary_font')) {$is_selected = 'selected';} 
+                                else {$is_selected = '';}
+                                //====== Print Font Item ======//
+                                echo '<option value="'.esc_attr($font->family).'" '.$is_selected.'>'.esc_html( $font->family).'</option>';
+                            endforeach;
+                        endif;
                     ?>
                 </select>
             </div>
         </div>
         <!-- Control Item -->
-        <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
+        <div class="control-item col-12 col-l-6 <?php if (get_option('google_fonts') !== '1') { echo 'hidden'; } ?> google-fonts-controler <?php if (is_rtl()) { echo 'rtl'; }?>">
             <div class="content-box">
                 <label for="primary_font_rtl">
                     <?php echo __('Headers Font RTL','tornado'); ?>
@@ -209,19 +228,21 @@
                 </label>
                 <select name="primary_font_rtl" class="advanced-select">
                     <?php
-                        foreach ($font_list as $font ) :
-                            //====== Check if Selected ======//
-                            if ($font->family == get_option('primary_font_rtl')) {$is_selected = 'selected';} 
-                            else {$is_selected = '';}
-                            //====== Print Font Item ======//
-                            echo '<option value="'.esc_attr($font->family).'" '.$is_selected.'>'.esc_html( $font->family).'</option>';
-                        endforeach;
+                        if (get_option('google_fonts') === '1') :
+                            foreach ($font_list as $font ) :
+                                //====== Check if Selected ======//
+                                if ($font->family == get_option('primary_font_rtl')) {$is_selected = 'selected';} 
+                                else {$is_selected = '';}
+                                //====== Print Font Item ======//
+                                echo '<option value="'.esc_attr($font->family).'" '.$is_selected.'>'.esc_html( $font->family).'</option>';
+                            endforeach;
+                        endif;
                     ?>
                 </select>
             </div>
         </div>
         <!-- Control Item -->
-        <div class="control-item col-12 col-l-6 <?php if (is_rtl()) { echo 'rtl'; }?>">
+        <div class="control-item col-12 col-l-6 <?php if (get_option('google_fonts') !== '1') { echo 'hidden'; } ?> google-fonts-controler <?php if (is_rtl()) { echo 'rtl'; }?>">
             <div class="content-box">
                 <label for="secondary_font_rtl">
                     <?php echo __('Normal Font RTL','tornado'); ?>
@@ -229,15 +250,57 @@
                 </label>
                 <select name="secondary_font_rtl" class="advanced-select">
                     <?php
-                        foreach ($font_list as $font ) :
-                            //====== Check if Selected ======//
-                            if ($font->family == get_option('secondary_font_rtl')) {$is_selected = 'selected';} 
-                            else {$is_selected = '';}
-                            //====== Print Font Item ======//
-                            echo '<option value="'.esc_attr($font->family).'" '.$is_selected.'>'.esc_html( $font->family).'</option>';
-                        endforeach;
+                        if (get_option('google_fonts') === '1') :
+                            foreach ($font_list as $font ) :
+                                //====== Check if Selected ======//
+                                if ($font->family == get_option('secondary_font_rtl')) {$is_selected = 'selected';} 
+                                else {$is_selected = '';}
+                                //====== Print Font Item ======//
+                                echo '<option value="'.esc_attr($font->family).'" '.$is_selected.'>'.esc_html( $font->family).'</option>';
+                            endforeach;
+                        endif;
                     ?>
                 </select>
+            </div>
+        </div>
+        <!-- Control Item -->
+        <div class="control-item col-12 col-l-6 <?php if (get_option('google_fonts') === '1') { echo 'hidden'; } ?> custom-fonts-controler <?php if (is_rtl()) { echo 'rtl'; }?>">
+            <div class="content-box">
+                <label for="custom_primary_font">
+                    <?php echo __('Headers Font','tornado'); ?>
+                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Headers and Titles Font Family','tornado'); ?>"></span>
+                </label>
+                <input type="text" name="custom_primary_font" value="<?php echo get_option('custom_primary_font'); ?>">
+            </div>
+        </div>
+        <!-- Control Item -->
+        <div class="control-item col-12 col-l-6 <?php if (get_option('google_fonts') === '1') { echo 'hidden'; } ?> custom-fonts-controler <?php if (is_rtl()) { echo 'rtl'; }?>">
+            <div class="content-box">
+                <label for="custom_secondary_font">
+                    <?php echo __('Normal Font','tornado'); ?>
+                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Normal Text Font Family','tornado'); ?>"></span>
+                </label>
+                <input type="text" name="custom_secondary_font" value="<?php echo get_option('custom_secondary_font'); ?>">
+            </div>
+        </div>
+        <!-- Control Item -->
+        <div class="control-item col-12 col-l-6 <?php if (get_option('google_fonts') === '1') { echo 'hidden'; } ?> custom-fonts-controler <?php if (is_rtl()) { echo 'rtl'; }?>">
+            <div class="content-box">
+                <label for="primary_font_rtl">
+                    <?php echo __('Headers Font RTL','tornado'); ?>
+                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Headers and Titles Font Family RTL','tornado'); ?>"></span>
+                </label>
+                <input type="text" name="custom_primary_font_rtl" value="<?php echo get_option('custom_primary_font_rtl'); ?>">
+            </div>
+        </div>
+        <!-- Control Item -->
+        <div class="control-item col-12 col-l-6 <?php if (get_option('google_fonts') === '1') { echo 'hidden'; } ?> custom-fonts-controler <?php if (is_rtl()) { echo 'rtl'; }?>">
+            <div class="content-box">
+                <label for="custom_secondary_font_rtl">
+                    <?php echo __('Normal Font RTL','tornado'); ?>
+                    <span class="ti-help-mark help-btn" data-txt="<?php echo __('Normal Text Font Family RTL','tornado'); ?>"></span>
+                </label>
+                <input type="text" name="custom_secondary_font_rtl" value="<?php echo get_option('custom_secondary_font_rtl'); ?>">
             </div>
         </div>
         <!-- Control Item -->

@@ -34,7 +34,6 @@
                 update_option('meta_copyrights', 'جميع الحقوق محفوظة لــ Tornado UI');
             }
 
-
             //=====> Default Design Global Options <=====//
             if(!get_option('theme_logo')) {
                 update_option('theme_logo', get_template_directory_uri() . '/dist/img/logo.png' );
@@ -69,15 +68,41 @@
                 update_option('typo_color', '#555555');
             }
 
-            //=====> Default Design Fonts Options <=====//
+            //=====> Default Design Google Fonts <=====//
             if(!get_option('primary_font')) {
-                update_option('primary_font', "DIN NEXT");
+                update_option('primary_font', "Roboto");
             }
 
             if(!get_option('secondary_font')) {
-                update_option('secondary_font', "DIN NEXT");
+                update_option('secondary_font', "Roboto");
             }
 
+            if(!get_option('primary_font_rtl')) {
+                update_option('primary_font_rtl', "Almarai");
+            }
+
+            if(!get_option('secondary_font_rtl')) {
+                update_option('secondary_font_rtl', "Almarai");
+            }
+
+            //=====> Default Design Custom Fonts <=====//
+            if(!get_option('custom_primary_font')) {
+                update_option('custom_primary_font', "Roboto");
+            }
+
+            if(!get_option('custom_secondary_font')) {
+                update_option('custom_secondary_font', "Roboto");
+            }
+
+            if(!get_option('custom_primary_font_rtl')) {
+                update_option('primary_font_rtl', "DIN NEXT");
+            }
+
+            if(!get_option('custom_secondary_font_rtl')) {
+                update_option('secondary_font_rtl', "DIN NEXT");
+            }
+
+            //=====> Default Design Fonts Options <=====//
             if(!get_option('base_l_size')) {
                 update_option('base_l_size', '16px');
             }
