@@ -14,12 +14,14 @@ Tornado Starter Template is a Advanced Wordpress Theme Startup Enviroment With T
 	 -- [new] Contact US and Success Templates
 	 -- [new] Preformance htaccess file for Production Purpose [_Performance-htaccess.txt].
 	 -- [new] Admin Menu Optimizer Function Remove Useless Items
+	 -- [new] Creating Custom Breadcrumb
 	 -- [update] Tornado UI to v2.1.5
 	 -- [update] WordPress Core to v5.4.1
 	 -- [update] Re-Structure Theme Files and Folders
 	 -- [update] improve Functions Code
 	 -- [update] more Powerful Preformance and Cleanups
 	 -- [Deprecated] Remove Theme Customizer Options and Files.
+	 -- [Deprecated] Remove Yoast Breadcrumb.
 
 ---------------------
 ##### 03/2019 Changelog
@@ -95,6 +97,7 @@ Tornado Starter Template is a Advanced Wordpress Theme Startup Enviroment With T
 	 -- functions/                  '[Theme Core Functions Goes in functions.php]'
 	  -- admin.php                  '[Theme Custom Options Page]'
 	  -- admin (Folder)             '[the Custom Options Page Functions Organized]'
+	  -- breadcrumb.php             '[Custom Breadcrumb Function]'
 	  -- custom-post-types.php      '[Sample for Create Custom Post Types and Taxonomies]'
 	  -- init.php                   '[Theme Setup Process and Registering all Support Features]'
 	  -- preformance.php            '[The Theme Preformance Filters and Clean-up]'
