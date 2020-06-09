@@ -25,6 +25,7 @@
      * 17 - Contact 7 Dynamic Data Passing
      * 18 - Check Polylang
      * 19 - WP Default Features Filtering
+     * 20 - Include Breadcrumb Function
      * 
     */
 
@@ -228,4 +229,7 @@
     remove_filter('the_excerpt', 'wpautop'); //=====> Excrept Return Text Only
     //=====> Remove Adding Extra Views
     remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
+    //==== Include Breadcrumb Function ====//
+    include( dirname(__FILE__) . '/inc/functions/breadcrumb.php' );
 ?>

@@ -14,10 +14,5 @@
     <?php if ( !is_home() && !is_front_page() ) { echo wp_title(); } else { echo bloginfo('description'); } ?>
 </h1>
 
-<?php
-    //======== Breadcrumb ========//
-    if ( !is_home() && !is_front_page() ) {
-        // <!-- Breadcrumb -->
-        if ( function_exists('yoast_breadcrumb') ) { yoast_breadcrumb('<div class="breadcrumb">','</div>') ;}
-    } 
-?>
+<!-- Breadcrumb -->
+<?php the_breadcrumb(); ?>
