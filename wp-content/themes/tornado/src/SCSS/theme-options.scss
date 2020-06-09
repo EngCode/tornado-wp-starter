@@ -523,3 +523,32 @@ $xlarge-query-down:1600px; // Big Desktop Screen Size to start from
         }
     }
 }
+
+.floating-notfications {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    &.rtl {
+        left: 30px;
+        right: auto;
+    }
+    .alert-box {
+        padding: 10px 15px;
+        font-size:14px;
+        color:#1c1c1c;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(#000,0.1);
+        transition: all 0.3s;
+        opacity: 0;
+        border-radius: 5px;
+        &.success {
+            background-color: #41cc62;
+            color:#FFF;
+        }
+        &.danger {
+            background-color: #de3131;
+            color:#FFF;
+        }
+        &.active {opacity: 1;}
+    }
+}

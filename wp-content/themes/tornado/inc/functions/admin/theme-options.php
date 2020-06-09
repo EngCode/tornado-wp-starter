@@ -90,7 +90,7 @@
         <li class="ti-brush" data-tab="design-options"><?php echo __('Design Options','tornado'); ?></li>
     </ul>
     <!-- Tabs Content -->
-    <form method="post" action="options.php" class="tabs-form">
+    <form method="post" action="options.php" class="tabs-form" id="tornado-options">
         <!-- Submit Button -->
         <div class="floating-submit">
             <?php
@@ -129,6 +129,10 @@
     <!-- // Tabs Content -->
 </div>
 <!-- // Theme Options -->
+
+<!-- Notifications -->
+<div class="floating-notfications"></div>
+<!-- // Notifications -->
 
 <!-- Code Mirror -->
 <script src="https://codemirror.net/lib/codemirror.js"></script>
@@ -201,6 +205,14 @@
             };
         });
 
+        /*============ Select Default Values ==============*/
+        var defaultSelects = document.querySelectorAll('.options-panel select');
+        Array.from(defaultSelects).forEach(element => {
+            var defaultOption = 'option[value="'+element.getAttribute('data-value')+'"]',
+                defaultOptionElement = element.querySelector(defaultOption);
+            if (defaultOptionElement) defaultOptionElement.setAttribute('selected',true);
+        });
+
         /*============ Advanced Select ==============*/
         var advancedSelect = document.querySelectorAll('.advanced-select');
         Array.from(advancedSelect).forEach((element,index) => {
@@ -265,6 +277,49 @@
             //===== Opens the media library =====//
             meta_image_frame.open();
         });
+    });
+
+    //===== Ajax Submit =====//
+    jQuery(document).ready(function ($) {
+        function save_tornado_options() {
+            $('#tornado-options').submit(function () {
+            var encode_controls =  $(this).serialize();
+            $.post('options.php', encode_controls).error(
+                /*======= Response Function =========*/
+                function() {
+                    /*========= on Error  ==========*/
+                    var notifiElement = document.querySelector('.floating-notfications'),
+                        errorMsg = '<div class="alert-box danger"><?php echo __('Error : Setting has not been saved.','tornado'); ?></div>';
+                    /*========= Create Message ==========*/
+                    notifiElement.innerHTML = errorMsg;
+                    /*========= Ge Message Element ==========*/
+                    var msgElement = notifiElement.querySelector('.alert-box');
+                    /*========= Show Message Element ==========*/
+                    msgElement.classList.add('active');
+                    /*========= Remove Message Element After 3s ==========*/
+                    setTimeout(() => {
+                        msgElement.remove();
+                    }, 3000);
+                }).success( function() {
+                    /*========= on Success  ==========*/
+                    var notifiElement = document.querySelector('.floating-notfications'),
+                        errorMsg = '<div class="alert-box success"><?php echo __('Changes Saved.','tornado'); ?></div>';
+                    /*========= Create Message ==========*/
+                    notifiElement.innerHTML = errorMsg;
+                    /*========= Ge Message Element ==========*/
+                    var msgElement = notifiElement.querySelector('.alert-box');
+                    /*========= Show Message Element ==========*/
+                    msgElement.classList.add('active');
+                    /*========= Remove Message Element After 3s ==========*/
+                    setTimeout(() => {
+                        msgElement.remove();
+                    }, 3000);
+                });
+                return false;    
+            });
+        }
+    
+        save_tornado_options();
     });
 </script>
 <?php } ?>
