@@ -131,7 +131,7 @@
 <!-- // Theme Options -->
 
 <!-- Notifications -->
-<div class="floating-notfications"></div>
+<div class="floating-notfications  <?php if (is_rtl()) { echo 'rtl'; }?>"></div>
 <!-- // Notifications -->
 
 <!-- Code Mirror -->
@@ -142,6 +142,79 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.js"></script>
 <!-- Custom JS -->
 <script>
+    //======> Tabs System <======//
+    document.addEventListener('DOMContentLoaded', function () {
+        //======> Get Elements <=======//
+        const getElement = document.querySelector.bind(document);
+
+        //======> Get Multiple Elements <=======//
+        const getElements = document.querySelectorAll.bind(document);
+
+        //======> Get All Siblings <=======//
+        const getSiblings = (element,selector) => {
+            'use strict';
+            /*== Get all siblings of ==> element @param {Node} ==> @return {Array} The siblings ==*/
+            if (element !== null) {
+                return Array.prototype.filter.call(element.parentNode.children, sibling => {
+                    if(!selector) {
+                        return sibling !== element;
+                    } else if(sibling.matches(selector)) {
+                        return sibling;
+                    }
+                });
+            }
+        };
+
+        'use strict';
+        //=== Activate First tab and its Content Box
+        getElements('.tabs-menu [data-tab]:first-of-type,.tab-content:first-of-type').forEach(function (elements) {
+            //==== Open the Tab Panel by URL HashTag ====//
+            if (elements.hasAttribute('data-active-url')) {
+                var urlHash = window.location.hash.substr(1),
+                    tabID = elements.getAttribute('data-tab');
+                if (urlHash === '#' + tabID) {
+                    tabID.classList.add('active');
+                    getElement('#' + tabID).add('active');
+                }
+            } else {
+                //=== Open the First Tab ===//
+                elements.classList.add('active');
+            }
+        });
+        //=== When Click on Tab
+        var tabsBtns = getElements('.tabs-menu [data-tab]');
+        Array.from(tabsBtns).forEach(function (thisElement) {
+            thisElement.addEventListener('click', function () {
+                //==== Store the Tab ID and this Element
+                var getPanelId = thisElement.getAttribute('data-tab'),
+                    targtedPanel = getElement('#' + getPanelId);
+                //==== Call Back Function Before Opens the Panel ====//
+                if (thisElement.hasAttribute('data-call-before')) {
+                    var callBackBefore = thisElement.getAttribute('data-call-before');
+                    window[callBackBefore]();
+                }
+                //==== Activate Clicked Tab
+                thisElement.classList.add('active');
+                //=== Remove Active Class From Siblings
+                getSiblings(thisElement).forEach(function (siblings) {
+                    siblings.classList.remove('active');
+                });
+                //==== Activate Tab Content
+                targtedPanel.classList.add('active');
+                //=== Remove Active Class From Siblings
+                getSiblings(targtedPanel).forEach(function (siblings) {
+                    siblings.classList.remove('active');
+                });
+                //==== Call Back Function After Opens the Panel ====//
+                if (thisElement.hasAttribute('data-call-after')) {
+                    var callBackAfter = thisElement.getAttribute('data-call-after');
+                    window[callBackAfter]();
+                }
+            });
+        });
+    });
+
+    //======> Tabs Hack <======//
     document.addEventListener('DOMContentLoaded', function () {
         'use strict';
 
@@ -249,6 +322,7 @@
             });
         }
     });
+
     //===== Media Uploader Popup =====//
     jQuery(document).ready(function ($) {
         //===== Runs when the image button is clicked =====//
