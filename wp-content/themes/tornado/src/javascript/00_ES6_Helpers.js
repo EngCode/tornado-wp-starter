@@ -9,7 +9,7 @@ const getElements = document.querySelectorAll.bind(document);
 
 //======> Define Page Direction <=======//
 var bodyElement = getElement('body.wp-admin');
-if (!bodyElement) {
+if (bodyElement) {
     const pageDirection =  getElement('html').getAttribute('dir'); // getComputedStyle(document.body).direction;
 } else {
     const pageDirection =  'ltr';
