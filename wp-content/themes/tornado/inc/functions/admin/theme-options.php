@@ -226,7 +226,8 @@
         Array.from(tab_btns).forEach(btn => {
             btn.addEventListener('click', event => {
                 var tab_id = btn.getAttribute('data-tab');
-                window.location.hash = tab_id;
+                history.pushState(null, null, '#'+tab_id)
+                // window.location.hash = tab_id;
             });
         });
 
