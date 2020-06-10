@@ -15,7 +15,7 @@ if (!wp.editor) {
         MediaUploadCheck,
         AlignmentToolbar,
         BlockControls,
-        ColorPalette
+        ColorPalette,
         InnerBlocks,
         InspectorControls
     } = wp.blockEditor;
@@ -28,7 +28,7 @@ if (!wp.editor) {
         MediaUploadCheck,
         AlignmentToolbar,
         BlockControls,
-        ColorPalette
+        ColorPalette,
         InnerBlocks,
         InspectorControls
     } = wp.editor;
