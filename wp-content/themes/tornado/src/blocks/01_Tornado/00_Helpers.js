@@ -7,7 +7,7 @@ const {registerBlockType} = wp.blocks;
 const {withInstanceId} = wp.compose;
 /*===== Editable Components =====*/
 if (!wp.editor) {
-    const {
+    var {
         PlainText,
         RichText,
         Editable,
@@ -20,7 +20,7 @@ if (!wp.editor) {
         InspectorControls
     } = wp.blockEditor;
 } else {
-    const {
+    var {
         PlainText,
         RichText,
         Editable,
@@ -35,7 +35,7 @@ if (!wp.editor) {
 }
 
 /*===== Editor Components =====*/
-const {
+var {
     Draggable,
     Panel,
     PanelBody,
@@ -52,10 +52,10 @@ const {
 
 /*===== Editor Server Render =====*/
 if (!wp.components.serverSideRender) {
-    const ServerSideRender = wp.components.serverSideRender;
+    var ServerSideRender = wp.components.serverSideRender;
 } else {
     /*===== Editor Server Render =====*/
-    const ServerSideRender = wp.serverSideRender;
+    var ServerSideRender = wp.serverSideRender;
 }
 /*===== Editor Elements Components =====*/
 const {Component, Fragment} = wp.element;
