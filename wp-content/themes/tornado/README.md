@@ -9,7 +9,6 @@ Tornado Starter Template is a Advanced Wordpress Theme Startup Enviroment With T
 	 -- [fix] Gutenberg JS Helpers to WordPress v5.4.1
 	 -- [new] Custom Options Page in Backend
 	 -- [fix] SVG Support Fix
-	 -- [new] new Plugins Included [ Optional ]
 	 -- [new] User Process Templates
 	 -- [new] Contact US and Success Templates
 	 -- [new] Preformance htaccess file for Production Purpose [_Performance-htaccess.txt].
@@ -41,23 +40,6 @@ Tornado Starter Template is a Advanced Wordpress Theme Startup Enviroment With T
 	 -- Removing Rich Content inline Styles
 	 -- Remove Media Gallery Inline Styling
 	 -- Disable Assets Versioning [Remove CSS/JS Files Versions]
-
----------------------
-##### First Steps Checklist
-	-'Setting up Your Config.php File and Install the CMS'
-	-'Config the Theme by Replacing Images and Frontend CSS/JS Files for the New Project'
-	-'Config the Theme Assets for the New Project in /inc/functions/theme-assets.php'
-	-'Do Not Forget to Activate Debug Mode for Professional Development'
-	-'Config the Theme Setting Page in Customizer You Can Track it From ==> [functions.php]'
-	-'Create/Add Your Own Theme Setting as The New Frontend Needs or Provide'
-	-'Do Not Forget the Customizer Design Options Default Values Change it With The New One'
-	-'Config the Gutenberg Default Filters and Names From [src/php/gutenberg.php]'
-	-'Start Customize and Confige the Core Post Types for the New Frontend'
-	-'Create and Customize Your Custom Post Types as the Frontend Provide or Needs'
-	-'Validate and Create Default Values for Any Interactive Part in Your Theme'
-	-'Create and Integrate the Theme Design With Gutenberg Editor'
-
-**Think Smartly and Always Remember the User is Dumb that's why we should think for him it's our job**
 
 ---------------------
 ##### Tornado Theme Structure
@@ -199,23 +181,6 @@ Tornado Starter Template is a Advanced Wordpress Theme Startup Enviroment With T
 	use thes name Pattern for creating an archive for custom post types witch represent a module category to
 	make your custom module loop list and to be able to use the core main query instead of the Custom Query
 	Witch May Causing Problems in some situations
----------------------
-##### Included Plugins and Tools [ All Plugins are Optional ]
-	# PolyLang                                   [ Multi Language Manager ]
-	# Contact 7                                  [ Custom Frontend Forms ]
-	# Duplicate Page (Developing Mode Only)      [ Posts Duplicator for Fast Testing ] 
-	# Advance Custom Fields Pro                  [ for Creating Custom Fields ] 
-	# Yoast SEO Pro                              [ SEO Manager ]
-	# Yoast SEO Pro [Local]                      [ SEO Manager for Google Local Business ]
-	# Yoast SEO Pro [News]                       [ SEO Manager for Google News ]
-	# Yoast SEO Pro [Video]                      [ SEO Manager for Videos Search ]
-	# WooCommerce                                [ Advanced Store Manage System ]
-	# WooCommerce Services                       [ for WooCommerce Support ]
-	# WooCommerce Yith Wishlist                  [ add Wishlist to WooCommerce ]
-	# jetpack                                    [ for WooCommerce Support ] 
----------------------
-**Developers Note : Alwayes Turn On Debug Mode and Eleminate any Warning/Error or even Notes ,** 
-Standard and Clean / Human... Readable Code Please for Evolving Opportunities.
 
 ---------------------
-**Created With ♥ By Abdullah.Ramadan for the Team**
+**Created With ♥ By Abdullah.Ramadan**
